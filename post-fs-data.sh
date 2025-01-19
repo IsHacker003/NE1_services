@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Set SELinux to Permissive mode
+# Set SELinux to Permissive mode (to fix Developer Options crash)
 setenforce 0
 # Turn on "Disable HW Overlays" (not working)
 service call SurfaceFlinger 1008 i32 1
