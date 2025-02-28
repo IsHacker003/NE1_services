@@ -1,4 +1,5 @@
 #!/system/bin/sh
+
 #               Copyright (C) 2025  IsHacker
 #
 #     This Magisk module is free software: you can redistribute it and/or modify
