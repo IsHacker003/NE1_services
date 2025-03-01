@@ -14,6 +14,21 @@
 
 #Wait for boot completion
 sleep 20
+# Set CPU frequency and governor
+for i in `seq 0 3`; do
+    chmod 0644 /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+    echo "performance" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+    chmod 0644 /sys/devices/system/cpu/cpu$i/cpufreq/scaling_min_freq
+    echo "1248000" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_min_freq
+done
+# Power-efficient workqueues
+chmod 0644 /sys/module/workqueue/parameters/power_efficient
+echo 'Y' > /sys/module/workqueue/parameters/power_efficient
+# Increase RQ affinity (improves disk R/W speed)
+echo '2' > /sys/block/mmcblk0/queue/rq_affinity
+echo '2' > /sys/block/mmcblk1/queue/rq_affinity
+# Set GPU frequency
+echo "650000" > /proc/gpufreq/gpufreq_opp_freq
 # Turn on "Disable HW Overlays" (not working)
 service call SurfaceFlinger 1008 i32 1
 # Disable Low Memory Killer (LMK)
