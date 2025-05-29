@@ -39,5 +39,3 @@ echo '0,0,0,0,0,0' > /sys/module/lowmemorykiller/parameters/minfree
 setprop persist.radio.vilte_ut_support 1
 setprop persist.ims.simulate 1
 setprop persist.radio.vilte_downgrade 1
-# drmserver is the last thing left of Digital Restrictions Management (DRM) in the ROM, which shall be taken care of by this Magisk module.
-watch -n 0.8 killall drmserver -v
